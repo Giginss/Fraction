@@ -3,11 +3,17 @@ package computerScienceAP;
 public class Complex implements Number {
 	private double real;
 	private double imaginary;
-	private int denominator;
+	private double denominator;
 	
 	public Complex(double real, double imag) {
 		this.real = real;
 		this.imaginary = imag;
+		denominator = 1;
+	}
+	public Complex(double real, double imag, double denom) {
+		this.real = real;
+		this.imaginary = imag;
+		this.denominator = denom;
 	}
 	public double getReal() {
 		return real;
@@ -32,11 +38,16 @@ public class Complex implements Number {
 
 	@Override
 	public Number divide(Number num) {
-		// TODO Auto-generated method stub
-		return null;
+		double denom = ((Complex) num).getReal() + ((Complex) num).getImag();
+		if(denom == 0) {
+			throw new ArithmeticException("You cannot divide by 0!");
+		}
+		Number divideComp = multiply(new Complex(((Complex) num).getReal(), ((Complex) num).getImag() * -1));
+		return new Complex(((Complex) divideComp).getReal(), ((Complex) divideComp).getImag(), denom);
 	}
 	@Override
 	public String toString() {
+		if(denominator == 1) {
 		if(real == 0 && imaginary == 0)
 			return "0";
 		if(real == 0)
@@ -44,8 +55,19 @@ public class Complex implements Number {
 		if(imaginary == 0)
 			return "" + real;
 		if(imaginary < 0)
-			return real + "-" + (imaginary*-1) + "i";
-		return real + "+" + imaginary + "i";
+			return real + " - " + (imaginary*-1) + "i";
+		return real + " + " + imaginary + "i";
+		} else {
+			if(real == 0 && imaginary == 0)
+				return "0";
+			if(real == 0)
+				return imaginary + "i/" + denominator;
+			if(imaginary == 0)
+				return "" + real + "/" + denominator;
+			if(imaginary < 0)
+				return real + "/" + denominator + " - " + (imaginary*-1) + "i/" + denominator;
+			return real + "/" + denominator + " + " + imaginary + "i/" + denominator;
+		}
 	}
 
 }
