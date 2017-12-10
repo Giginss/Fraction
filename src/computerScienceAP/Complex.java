@@ -3,6 +3,7 @@ package computerScienceAP;
 public class Complex implements Number {
 	private double real;
 	private double imaginary;
+	private int denominator;
 	
 	public Complex(double real, double imag) {
 		this.real = real;
