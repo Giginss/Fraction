@@ -45,18 +45,20 @@ public class ComplexFraction implements Number {
 		return new ComplexFraction((Fraction) ((ComplexFraction) divideCompNum).getReal().divide(denom), (Fraction) ((ComplexFraction) divideCompNum).getImag().divide(denom));
 	}
 	public String toString() {
-		if(imaginary.getNumerator() == 0 && real.getNumerator() == 0) {
+		Fraction realOutput = real.reduceFraction();
+		Fraction imagOutput = imaginary.reduceFraction();
+		if(imagOutput.getNumerator() == 0 && realOutput.getNumerator() == 0) {
 			return "0";
-		} else if(real.getNumerator() == 0) {
-			return imaginary.toString();
-		} else if(imaginary.getNumerator() == 0) {
-			return real.toString();
-		} else if(imaginary.getNumerator() < 0) {
-			return real.toString() + " - " + imaginary.getNumerator() * -1 + "/" + imaginary.getDenominator();
-		} else if(imaginary.getDenominator() < 0) {
-			return real.toString() + " - " + imaginary.getNumerator() + "/" + imaginary.getDenominator() * -1;
+		} else if(realOutput.getNumerator() == 0) {
+			return imagOutput.getNumerator() + "i/" + imagOutput.getDenominator();
+		} else if(imagOutput.getNumerator() == 0) {
+			return realOutput.toString();
+		} else if(imagOutput.getNumerator() < 0) {
+			return realOutput.toString() + " - " + imagOutput.getNumerator() * -1 + "i/" + imagOutput.getDenominator();
+		} else if(imagOutput.getDenominator() < 0) {
+			return realOutput.toString() + " - " + imagOutput.getNumerator() + "i/" + imagOutput.getDenominator() * -1;
 		}
-		return real.toString() + " + " + imaginary.toString();
+		return realOutput.toString() + " + " + imagOutput.getNumerator() + "i/" + imagOutput.getDenominator();
 	}
 
 }

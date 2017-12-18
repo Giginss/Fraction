@@ -116,7 +116,7 @@ public class CalculatorGUI extends GBFrame {
 				Fraction frac0 = new Fraction(realNumeratorField1.getNumber(), realDenominatorField1.getNumber());
 				Fraction frac1 = new Fraction(imaginaryNumeratorField1.getNumber(), imaginaryDenominatorField1.getNumber());
 				Fraction frac2 = new Fraction(realNumeratorField2.getNumber(), realDenominatorField2.getNumber());
-				Fraction frac3 = new Fraction(imaginaryNumeratorField2.getNumber(), imaginaryDenominatorField1.getNumber());
+				Fraction frac3 = new Fraction(imaginaryNumeratorField2.getNumber(), imaginaryDenominatorField2.getNumber());
 				num1 = new ComplexFraction(frac0, frac1);
 				num2 = new ComplexFraction(frac2, frac3);
 				displayArea.setText("Complex Fraction " + num1.toString() + " and " + num2.toString() + " entered!");
