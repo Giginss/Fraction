@@ -60,7 +60,7 @@ public class Complex implements Number {
 	@Override
 	public Number divide(Number num) {
 		checkObject(num);
-		double denom = ((Complex) num).getReal() + ((Complex) num).getImag();
+		double denom = ((Complex) num).getReal() * ((Complex) num).getReal() + ((Complex) num).getImag() * ((Complex) num).getImag();
 		if(denom == 0) {
 			throw new ArithmeticException("You cannot divide by 0!");
 		}

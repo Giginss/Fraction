@@ -37,7 +37,7 @@ public class ComplexFraction implements Number {
 
 	@Override
 	public Number divide(Number num) {
-		Fraction denom = (Fraction) ((ComplexFraction) num).getReal().add(((ComplexFraction) num).getImag());
+		Fraction denom = (Fraction) ((ComplexFraction) num).getReal().multiply(((ComplexFraction) num).getReal()).add(((ComplexFraction) num).getImag().multiply(((ComplexFraction) num).getImag()));
 		if(denom.getDenominator() == 0) {
 			throw new ArithmeticException("You cannot divide by 0!");
 		}
